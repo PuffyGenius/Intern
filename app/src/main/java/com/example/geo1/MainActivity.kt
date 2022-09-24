@@ -69,13 +69,14 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        fusedLocationProviderClient= LocationServices.getFusedLocationProviderClient(this)
-        tvLatitude= findViewById(R.id.tv_latitude)
-        tvLongitude= findViewById(R.id.tv_longitude)
-        getCurrentLocation();
+//        fusedLocationProviderClient= LocationServices.getFusedLocationProviderClient(this)
+//        tvLatitude= findViewById(R.id.tv_latitude)
+//        tvLongitude= findViewById(R.id.tv_longitude)
+//        getCurrentLocation();
     }
 
 
+        @SuppressLint("SetTextI18n")
         private fun getCurrentLocation(){
             if(checkPermission()){
 
@@ -91,8 +92,8 @@ class MainActivity : AppCompatActivity() {
                         }
                         else{
                             Toast.makeText(this,"Location Get",Toast.LENGTH_SHORT).show()
-                            tvLatitude.text = (' '+location.latitude.toString())
-                            tvLongitude.text = (' '+location.longitude.toString())
+                            tvLatitude.text = ' ' + location.latitude.toString()
+                            tvLongitude.text = ' ' + location.longitude.toString()
                         }
                     }
                 }
