@@ -91,8 +91,8 @@ class MainActivity : AppCompatActivity() {
                         }
                         else{
                             Toast.makeText(this,"Location Get",Toast.LENGTH_SHORT).show()
-                            tvLatitude.text = ''+ Location.latitude
-                            tvLongitude.text = ''+location.longitude
+                            tvLatitude.text = (' '+location.latitude.toString())
+                            tvLongitude.text = (' '+location.longitude.toString())
                         }
                     }
                 }
