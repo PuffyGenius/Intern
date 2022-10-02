@@ -21,8 +21,8 @@
         android:id="@+id/tv_latitude"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="184dp"
-        android:layout_marginTop="192dp"
+        android:layout_marginLeft="128dp"
+        android:layout_marginTop="196dp"
         android:text="tv_latitude"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="@+id/constraintLayout" />
@@ -31,8 +31,8 @@
         android:id="@+id/tv_longitude"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="184dp"
-        android:layout_marginTop="240dp"
+        android:layout_marginLeft="128dp"
+        android:layout_marginTop="244dp"
         android:text="tv_longitude"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintTop_toTopOf="@+id/constraintLayout" />

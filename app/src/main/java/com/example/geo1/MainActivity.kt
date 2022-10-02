@@ -1,8 +1,8 @@
 
 package com.example.geo1
 
-
-import android.Manifest
+//
+//import android.Manifest
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -15,8 +15,8 @@ import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.tabs.TabLayout
 import androidx.viewpager.widget.ViewPager
 import androidx.appcompat.app.AppCompatActivity
-import android.view.Menu
-import android.view.MenuItem
+//import android.view.Menu
+//import android.view.MenuItem
 import android.widget.TextView
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
@@ -26,15 +26,15 @@ import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 
 import android.annotation.SuppressLint
-import android.location.Geocoder
-import android.os.Looper
-import android.provider.ContactsContract
-import android.util.Log
+//import android.location.Geocoder
+//import android.os.Looper
+//import android.provider.ContactsContract
+//import android.util.Log
 import com.google.android.gms.location.*
 //import kotlinx.android.synthetic.main.activity_main.*
-import java.security.Permission
-import java.security.Provider
-import java.util.*
+//import java.security.Permission
+//import java.security.Provider
+//import java.util.*
 
 
 
@@ -53,6 +53,13 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        setContentView(R.layout.fragment_main)
+
+        fusedLocationProviderClient= LocationServices.getFusedLocationProviderClient(this)
+        tvLatitude= findViewById(R.id.tv_latitude)
+        tvLongitude= findViewById(R.id.tv_longitude)
+        getCurrentLocation()
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
@@ -69,10 +76,7 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-//        fusedLocationProviderClient= LocationServices.getFusedLocationProviderClient(this)
-//        tvLatitude= findViewById(R.id.tv_latitude)
-//        tvLongitude= findViewById(R.id.tv_longitude)
-//        getCurrentLocation();
+
     }
 
 
@@ -83,6 +87,13 @@ class MainActivity : AppCompatActivity() {
                 if(isLocationEnabled()){
                     //lat and long
                     //add permission check
+                    if(ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_COARSE_LOCATION)
+                        == PackageManager.PERMISSION_GRANTED &&
+                        ActivityCompat.checkSelfPermission(this, android.Manifest.permission.ACCESS_FINE_LOCATION)==
+                        PackageManager.PERMISSION_GRANTED) {
+                        requestPermissions()
+                        return
+                    }
                     fusedLocationProviderClient.lastLocation.addOnCompleteListener(this)
                     {
                         task-> val location: Location?=task.result
@@ -92,8 +103,8 @@ class MainActivity : AppCompatActivity() {
                         }
                         else{
                             Toast.makeText(this,"Location Get",Toast.LENGTH_SHORT).show()
-                            tvLatitude.text = ' ' + location.latitude.toString()
-                            tvLongitude.text = ' ' + location.longitude.toString()
+                            tvLatitude.text = ""+ location.latitude
+                            tvLongitude.text = ""+ location.longitude
                         }
                     }
                 }
